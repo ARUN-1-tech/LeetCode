@@ -1,0 +1,14 @@
+# Last updated: 7/9/2026, 10:08:36 AM
+class Solution:
+    def generateParenthesis(self, n: int):
+        res = []
+        def backtrack(s, open, close):
+            if len(s) == 2 * n:
+                res.append(s)
+                return
+            if open < n:
+                backtrack(s + "(", open + 1, close)
+            if close < open:
+                backtrack(s + ")", open, close + 1)
+        backtrack("", 0, 0)
+        return res    
