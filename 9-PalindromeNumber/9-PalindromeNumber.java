@@ -1,12 +1,12 @@
-// Last updated: 7/9/2026, 10:08:53 AM
-class Solution {
-    public boolean isPalindrome(int x) {
-        int r=0;
-        int t=x;
-        while(t>0){
-            r=r*10+t%10;
-            t/=10;
-        }
-        return (r==x) ? true:false;
-    }
-}
+// Last updated: 7/10/2026, 3:49:51 PM
+1class Solution {
+2    public boolean isPalindrome(int x) {
+3        int a=0;
+4        int n=x;
+5        while(n>0){
+6            a=(a*10)+(n%10);
+7            n=n/10;
+8        }
+9        return x==a;
+10    }
+11}
