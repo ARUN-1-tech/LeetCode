@@ -1,13 +1,35 @@
-// Last updated: 7/13/2026, 9:40:22 PM
-1class Solution {
-2    public List<String> fizzBuzz(int n) {
-3        List<String> ans=new ArrayList<>();
-4        for(int i=1;i<=n;i++){
-5            if(i%3==0 && i%5==0) ans.add("FizzBuzz");
-6            else if(i%3==0 && i%5!=0) ans.add("Fizz");
-7            else if(i%3!=0 && i%5==0) ans.add("Buzz");
-8            else ans.add(Integer.toString(i));
-9        }
-10        return ans;
-11    }
-12}
+// Last updated: 7/13/2026, 9:51:57 PM
+1/**
+2 * Definition for a binary tree node.
+3 * public class TreeNode {
+4 *     int val;
+5 *     TreeNode left;
+6 *     TreeNode right;
+7 *     TreeNode() {}
+8 *     TreeNode(int val) { this.val = val; }
+9 *     TreeNode(int val, TreeNode left, TreeNode right) {
+10 *         this.val = val;
+11 *         this.left = left;
+12 *         this.right = right;
+13 *     }
+14 * }
+15 */
+16class Solution {
+17    TreeNode first,second,prev;
+18    public void recoverTree(TreeNode root) {
+19        inorder(root);
+20        int temp=first.val;
+21        first.val=second.val;
+22        second.val=temp;
+23    }
+24    public void inorder(TreeNode node){
+25        if(node==null) return;
+26        inorder(node.left);
+27        if(prev!=null && prev.val>node.val){
+28            if(first==null) first=prev;
+29            second=node;
+30        }
+31        prev=node;
+32        inorder(node.right);
+33    }
+34}
