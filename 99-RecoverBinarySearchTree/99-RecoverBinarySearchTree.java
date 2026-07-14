@@ -1,14 +1,16 @@
-// Last updated: 7/14/2026, 11:10:05 AM
+// Last updated: 7/14/2026, 11:20:03 AM
 1class Solution {
-2    public int subarraySum(int[] nums, int k) {
-3        int n=nums.length,a=0;
-4        for(int i=0;i<n;i++){
-5            int sum=0;
-6            for(int j=i;j<n;j++){
-7                sum+=nums[j];
-8                if(sum==k) a++;
-9            }
-10        }
-11        return a;
-12    }
-13}
+2    public int maxArea(int[] height) {
+3        int n=height.length;
+4        int max=0;
+5        int i=0,j=n-1;
+6        while(i<j){
+7            int min=Math.min(height[i],height[j]);
+8            int s=(j-i)*min;
+9            max=Math.max(max,s);
+10            if(height[i]>height[j]) j--;
+11            else i++;
+12        }
+13        return max;
+14    }
+15}
