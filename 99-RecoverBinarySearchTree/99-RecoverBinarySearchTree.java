@@ -1,13 +1,12 @@
-// Last updated: 7/14/2026, 9:14:14 AM
+// Last updated: 7/14/2026, 9:23:29 AM
 1class Solution {
-2    public List<String> fizzBuzz(int n) {
-3        List<String> ans=new ArrayList<>();
-4        for(int i=1;i<=n;i++){
-5            if(i%15==0) ans.add("FizzBuzz");
-6            else if(i%3==0) ans.add("Fizz");
-7            else if(i%5==0) ans.add("Buzz");
-8            else ans.add(String.valueOf(i));
-9        }
-10        return ans;
-11    }
-12}
+2    public double myPow(double x, int n) {
+3        return helper(x,(long) n);
+4    }
+5    public double helper(double x, long n){
+6        if(n==0) return 1;
+7        if(n<0) return 1/helper(x,-n);
+8        if(n%2==0) return helper(x*x,n/2);
+9        else return x*helper(x*x,n/2);
+10    }
+11}
