@@ -1,17 +1,16 @@
-// Last updated: 7/15/2026, 9:10:48 AM
+// Last updated: 7/15/2026, 9:37:57 AM
 1class Solution {
-2    public int areaOfMaxDiagonal(int[][] dim) {
-3        int x=0,y=0;
-4        for(int i=0;i<dim.length;i++){
-5                int a=dim[i][0];
-6                int b=dim[i][1];
-7                int cur=a*a+b*b;
-8                int z=a*b;
-9                if(cur>y || (cur==y && z>x)){
-10                    y=cur;
-11                    x=z;
-12                }
-13        }
-14        return x;
-15    }
-16}
+2    public int[][] modifiedMatrix(int[][] matrix){
+3        for(int i=0;i<matrix[0].length;i++){
+4            int x=0;
+5            for(int j=0;j<matrix.length;j++){
+6                x=Math.max(x,matrix[j][i]);
+7                
+8            }
+9            for(int a=0;a<matrix.length;a++){
+10                if(matrix[a][i]==-1) matrix[a][i]=x;
+11            } 
+12        }
+13        return matrix;
+14    }
+15}
