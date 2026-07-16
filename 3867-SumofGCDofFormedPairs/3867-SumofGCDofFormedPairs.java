@@ -1,4 +1,4 @@
-// Last updated: 7/16/2026, 9:29:07 AM
+// Last updated: 7/16/2026, 9:29:15 AM
 1class Solution {
 2    public int findGCD(int a, int b) {
 3        if (b == 0) {
