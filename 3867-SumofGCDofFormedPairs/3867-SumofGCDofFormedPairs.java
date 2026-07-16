@@ -1,6 +1,6 @@
-// Last updated: 7/16/2026, 9:19:44 AM
+// Last updated: 7/16/2026, 9:29:07 AM
 1class Solution {
-2    public static int findGCD(int a, int b) {
+2    public int findGCD(int a, int b) {
 3        if (b == 0) {
 4            return a;
 5        }
