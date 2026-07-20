@@ -1,17 +1,22 @@
-// Last updated: 7/20/2026, 2:10:11 PM
+// Last updated: 7/20/2026, 2:30:41 PM
 1class Solution {
-2    public void rotate(int[] nums, int k) {
-3        k%=nums.length;
-4        abc(nums,0,nums.length-1);
-5        abc(nums,0,k-1);
-6        abc(nums,k,nums.length-1);
-7    }
-8    public void abc(int[]nums,int s,int e){
-9        while(s<e){
-10            int t=nums[s];
-11            nums[s]=nums[e];
-12            nums[e]=t;
-13            s++;e--;
-14        }
-15    }
-16}
+2    public long largestPerimeter(int[] nums) {
+3        long ans=0,s=0;
+4        for(int num:nums){
+5            s+=num;
+6        }
+7        Arrays.sort(nums);
+8        int j=nums.length-1;
+9        while (j >= 2 && (s - nums[j]) <= nums[j]) {
+10            s=s-nums[j];
+11            j=j-1;
+12        }
+13        for(int i=0;i<=j;i++){
+14            ans+=nums[i];
+15        }
+16        if (j < 2) {
+17            return -1;
+18        }
+19        return ans;
+20    }
+21}
