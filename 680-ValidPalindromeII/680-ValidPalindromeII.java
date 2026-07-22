@@ -1,20 +1,24 @@
-// Last updated: 7/22/2026, 11:35:14 AM
+// Last updated: 7/22/2026, 12:06:57 PM
 1class Solution {
-2    public boolean abc(String s, int l,int r){
-3        while(l<=r){
-4            if(s.charAt(l)!=s.charAt(r)) return false;
-5            else l++;r--;
-6        }
-7        return true;
-8    }
-9    public boolean validPalindrome(String s) {
-10        int l=0,r=s.length()-1;
-11        while(l<=r){
-12            if(s.charAt(l)!=s.charAt(r)){
-13                return abc(s,l,r-1) || abc(s,l+1,r);
-14            }
-15            else l++;r--;
-16        }
-17        return true;
-18    }
-19}
+2    public boolean closeStrings(String word1, String word2) {
+3        int[] ar1=new int[26];
+4        int[] ar2=new int[26];
+5        for(char c:word1.toCharArray()){
+6            ar1[c-'a']++;
+7        }
+8        for(char c:word2.toCharArray()){
+9            ar2[c-'a']++;
+10        }
+11        for(int i=0;i<26;i++){
+12            if((ar1[i]==0 && ar2[i]!=0)||(ar1[i]!=0 && ar2[i]==0)) return false;
+13        }
+14        Arrays.sort(ar1);
+15        Arrays.sort(ar2);
+16        for (int i = 0; i < 26; i++) {
+17            if (ar1[i] != ar2[i]) {
+18                return false;
+19            }
+20        }
+21        return true;
+22    }
+23}
