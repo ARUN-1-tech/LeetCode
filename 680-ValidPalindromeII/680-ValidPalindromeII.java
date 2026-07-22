@@ -1,4 +1,4 @@
-// Last updated: 7/22/2026, 12:06:57 PM
+// Last updated: 7/22/2026, 12:07:51 PM
 1class Solution {
 2    public boolean closeStrings(String word1, String word2) {
 3        int[] ar1=new int[26];
