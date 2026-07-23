@@ -1,15 +1,13 @@
-// Last updated: 7/23/2026, 3:12:01 PM
+// Last updated: 7/23/2026, 3:39:17 PM
 1class Solution {
-2    public boolean canConstruct(String r, String m) {
-3        if(r.length()>m.length()) return false;
-4        int[] ans=new int[26];
-5        for(int i=0;i<m.length();i++){
-6            ans[m.charAt(i)-'a']++;
-7        }
-8        for(int i=0;i<r.length();i++){
-9            if(ans[r.charAt(i)-'a']==0) return false;
-10            ans[r.charAt(i)-'a']--;
-11        }
-12        return true;
-13    }
-14}
+2    public int firstUniqChar(String s) {
+3        int[] ans=new int[26];
+4        for(int i=0;i<s.length();i++){
+5            ans[s.charAt(i)-'a']++;
+6        }
+7        for(int i=0;i<s.length();i++){
+8            if(ans[s.charAt(i)-'a']==1) return i;
+9        }
+10        return -1;
+11    }
+12}
