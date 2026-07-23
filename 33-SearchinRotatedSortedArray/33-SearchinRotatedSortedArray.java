@@ -1,30 +1,17 @@
-// Last updated: 7/23/2026, 9:37:34 PM
+// Last updated: 7/23/2026, 9:52:10 PM
 1class Solution {
-2    public int search(int[] nums, int target) {
-3        // int i = 0, j = nums.length - 1;
-4        // while (i <= j) {
-5        //     int mid = (i + j) / 2;
-6        //     if (nums[mid] == target)
-7        //         return mid;
-8        //     if (nums[i] <= nums[mid]) {
-9        //         if (nums[i] <= target && target < nums[mid]) {
-10        //             j = mid - 1;
-11        //         } else {
-12        //             i = mid + 1;
-13        //         }
-14        //     } else {
-15        //         if (nums[mid] < target && target <= nums[j]) {
-16        //             i = mid + 1;
-17        //         } else {
-18        //             j = mid - 1;
-19        //         }
-20        //     }
-21        // }
-22        // return -1;
-23
-24        for(int i=0;i<nums.length;i++){
-25            if(nums[i]==target) return i;
-26        }
-27        return -1;
-28    }
-29}
+2    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+3        int n=nums1.length;
+4        int m=nums2.length;
+5        int[] ans=new int[n+m];
+6        int i=0,j=0,k=0;
+7        while(i<n && j<m){
+8            if(nums1[i]<nums2[j]) ans[k++]=nums1[i++];
+9            else ans[k++]=nums2[j++];
+10        }
+11        while(i<n) ans[k++]=nums1[i++];
+12        while(j<m) ans[k++]=nums2[j++];
+13        if((m+n)%2==1) return ans[(m+n)/2];
+14        return (ans[((m+n)/2)-1]+ans[(m+n)/2])/2.0;
+15    }
+16}
