@@ -1,17 +1,29 @@
-// Last updated: 7/24/2026, 3:59:44 PM
+// Last updated: 7/24/2026, 4:23:26 PM
 1class Solution {
-2    public int minimumPushes(String word) {
-3        int[] ans=new int[26];
-4        for(char ch:word.toCharArray()){
-5            ans[ch-'a']++;
-6        }
-7        Arrays.sort(ans);
-8        int c=0,k=0;
-9        for(int i=25;i>=0;i--){
-10            if(ans[i]==0) break;
-11            c+=((k/8)+1)*ans[i];
-12            k++;
-13        }
-14        return c;
-15    }
-16}
+2    public String RLE(String sequence) {
+3        StringBuilder sb = new StringBuilder();
+4        char[] nums = sequence.toCharArray();
+5        char curr = nums[0];
+6        int count = 0;
+7        for (char num : nums) {
+8            if (num == curr)
+9                count++;
+10            else {
+11                sb.append(count);
+12                sb.append(curr);
+13                curr = num;
+14                count = 1;
+15            }
+16        }
+17        sb.append(count);
+18        sb.append(curr);
+19        return sb.toString();
+20    }
+21    public String countAndSay(int n) {
+22        if (n == 1)
+23            return "1";
+24        
+25        
+26        return RLE(countAndSay(n - 1));
+27    }
+28}
