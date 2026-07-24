@@ -1,18 +1,17 @@
-// Last updated: 7/24/2026, 3:10:43 PM
+// Last updated: 7/24/2026, 3:59:44 PM
 1class Solution {
-2    public int minSteps(String s, String t) {
-3        int n=s.length();
-4        int m=t.length();
-5        if(n!=m) return -1;
-6        int c=0;
-7        int[] sa=new int[26];
-8        for(int i=0;i<n;i++){
-9            sa[s.charAt(i)-'a']++;
-10            sa[t.charAt(i)-'a']--;
-11        }
-12        for(int i=0;i<26;i++){
-13            if(sa[i]>0) c+=sa[i];
-14        }
-15        return c;
-16    }
-17}
+2    public int minimumPushes(String word) {
+3        int[] ans=new int[26];
+4        for(char ch:word.toCharArray()){
+5            ans[ch-'a']++;
+6        }
+7        Arrays.sort(ans);
+8        int c=0,k=0;
+9        for(int i=25;i>=0;i--){
+10            if(ans[i]==0) break;
+11            c+=((k/8)+1)*ans[i];
+12            k++;
+13        }
+14        return c;
+15    }
+16}
