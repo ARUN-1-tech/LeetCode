@@ -1,28 +1,15 @@
-// Last updated: 7/24/2026, 12:37:39 PM
+// Last updated: 7/24/2026, 1:48:49 PM
 1class Solution {
-2    public int trap(int[] nums) {
-3        int n = nums.length;
-4        if (n == 0) return 0;
-5
-6        int[] leftMax = new int[n];
-7        int[] rightMax = new int[n];
-8        int amo = 0;
-9
-10        leftMax[0] = nums[0];
-11        for (int i = 1; i < n; i++) {
-12            leftMax[i] = Math.max(leftMax[i - 1], nums[i]);
-13        }
-14
-15        rightMax[n - 1] = nums[n - 1];
-16        for (int i = n - 2; i >= 0; i--) {
-17            rightMax[i] = Math.max(rightMax[i + 1], nums[i]);
-18        }
-19
-20        for (int i = 0; i < n; i++) {
-21            amo += Math.min(leftMax[i], rightMax[i]) - nums[i];
-22        }
-23
-24        return amo;
-25    }
-26}
-27
+2    public int minimumMoves(String s) {
+3        int i=0,c=0;
+4        while(i<s.length()){
+5            if(s.charAt(i)=='X'){
+6                i=i+3;
+7                c++;
+8            }else{
+9                i++;
+10            }
+11        }
+12        return c;
+13    }
+14}
