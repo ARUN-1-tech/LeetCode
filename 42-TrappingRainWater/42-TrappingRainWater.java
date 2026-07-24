@@ -1,15 +1,12 @@
-// Last updated: 7/24/2026, 1:48:49 PM
+// Last updated: 7/24/2026, 1:58:19 PM
 1class Solution {
-2    public int minimumMoves(String s) {
-3        int i=0,c=0;
-4        while(i<s.length()){
-5            if(s.charAt(i)=='X'){
-6                i=i+3;
-7                c++;
-8            }else{
-9                i++;
-10            }
-11        }
-12        return c;
-13    }
-14}
+2    public int removePalindromeSub(String s) {
+3        int i=0,j=s.length()-1;
+4        if(s.length()==0) return 0;
+5        while(i<=j){
+6            if(s.charAt(i)!=s.charAt(j)) return 2;
+7            i++;j--;
+8        }
+9        return 1;
+10    }
+11}
