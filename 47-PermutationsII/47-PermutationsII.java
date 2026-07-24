@@ -1,19 +1,16 @@
-// Last updated: 7/24/2026, 7:43:19 PM
+// Last updated: 7/24/2026, 7:51:46 PM
 1class Solution {
-2    public List<Integer> getRow(int num) {
-3        List<List<Integer>> lis=new ArrayList<>();
-4        for(int i=0;i<=num;i++){
-5            List<Integer> abc=new ArrayList<>();
-6            for(int j=0;j<=i;j++){
-7                if(j==i || j==0) abc.add(1);
-8                else{
-9                    int l=lis.get(i-1).get(j-1);  
-10                    int r=lis.get(i-1).get(j);     
-11                    abc.add(l+r); 
-12                }                      
-13            }
-14            lis.add(abc);
-15        }
-16        return lis.get(num);
-17    }
-18}
+2    public boolean containsNearbyDuplicate(int[] nums, int k) {
+3        HashSet<Integer> window = new HashSet<>();
+4        for (int i = 0; i < nums.length; i++) {
+5            if (i > k) {
+6                window.remove(nums[i - k - 1]);
+7            }
+8            if (!window.add(nums[i])) {
+9                return true;
+10            }
+11        }
+12        return false;
+13    }
+14}
+15
