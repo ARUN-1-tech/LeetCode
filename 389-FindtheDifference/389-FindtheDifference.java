@@ -1,22 +1,19 @@
-// Last updated: 7/29/2026, 9:33:37 AM
+// Last updated: 7/29/2026, 9:37:33 AM
 1class Solution {
 2    public int[] intersection(int[] nums1, int[] nums2) {
-3        Set<Integer> map1=new HashSet<>();
-4        Set<Integer> map2=new HashSet<>();
-5        List<Integer> ans=new ArrayList<>();
+3        Set<Integer> map=new HashSet<>();
+4        List<Integer> ans=new ArrayList<>();
+5        for(int num:nums2) map.add(num);
 6        for(int num:nums1){
-7            if(!map1.contains(num)) map1.add(num);
-8        }
-9        for(int n:nums2){
-10            if(!map2.contains(n)) map2.add(n);
+7            if(map.contains(num)) {
+8                ans.add(num);
+9                map.remove(num);
+10            }
 11        }
-12        for(int num:map1){
-13            if(map2.contains(num)) ans.add(num);
-14        }
-15        int[] result = new int[ans.size()];
-16        for (int i = 0; i < ans.size(); i++) {
-17            result[i] = ans.get(i);
-18        }
-19        return result;
-20    }
-21}
+12        int[] result = new int[ans.size()];
+13        for (int i = 0; i < ans.size(); i++) {
+14            result[i] = ans.get(i);
+15        }
+16        return result;
+17    }
+18}
