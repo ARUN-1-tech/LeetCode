@@ -1,10 +1,7 @@
-// Last updated: 7/30/2026, 9:00:49 AM
+// Last updated: 7/30/2026, 9:05:37 AM
 1class Solution {
-2    public int minimumPushes(String word) {
-3        int ans=0;
-4        for(int i=0;i<word.length();i++){
-5            ans+=(i/8)+1;
-6        }
-7        return ans;
-8    }
-9}
+2    public int maxProduct(int[] nums) {
+3        Arrays.sort(nums);
+4        return (nums[nums.length-1]-1)*(nums[nums.length-2]-1);
+5    }
+6}
