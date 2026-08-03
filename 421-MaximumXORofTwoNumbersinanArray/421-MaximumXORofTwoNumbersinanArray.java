@@ -1,23 +1,17 @@
-// Last updated: 8/3/2026, 2:29:16 PM
+// Last updated: 8/3/2026, 2:41:16 PM
 1class Solution {
-2    public int findMaximumXOR(int[] nums) {
-3        int maxResult = 0;
-4        int mask = 0;
-5        for (int i = 31; i >= 0; i--) {
-6            mask = mask | (1 << i);
-7            HashSet<Integer> set = new HashSet<>();
-8            for (int n : nums) {
-9                set.add(n & mask);
-10            }
-11            int target = maxResult | (1 << i);
-12            for (int prefix : set) {
-13                if (set.contains(prefix ^ target)) {
-14                    maxResult = target;
-15                    break;
-16                }
-17            }
-18        }
-19        return maxResult;
-20    }
-21}
-22
+2    public String reverseVowels(String s) {
+3        String v="aeiouAEIOU";
+4        int i=0,j=s.length()-1;
+5        char[] ans=s.toCharArray();
+6        while(i<j){
+7            while(i<j && v.indexOf(ans[i])==-1) i++;
+8            while(i<j && v.indexOf(ans[j])==-1) j--;
+9            char c=ans[i];
+10            ans[i]=ans[j];
+11            ans[j]=c;
+12            i++;j--;
+13        }
+14        return new String(ans);
+15    }
+16}
