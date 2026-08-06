@@ -1,39 +1,35 @@
-// Last updated: 8/6/2026, 2:28:08 PM
-1/**
-2 * Definition for singly-linked list.
-3 * public class ListNode {
-4 *     int val;
-5 *     ListNode next;
-6 *     ListNode() {}
-7 *     ListNode(int val) { this.val = val; }
-8 *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-9 * }
-10 */
-11class Solution {
-12    public void reorderList(ListNode head) {
-13        ListNode slow = head, fast = head;
-14        while (fast != null && fast.next != null) {
-15            slow = slow.next;
-16            fast = fast.next.next;
-17        }
-18        ListNode pre = null;
-19        while (slow != null) {
-20            ListNode temp = slow.next;
-21            slow.next = pre;
-22            pre = slow;
-23            slow = temp;
-24        }
-25        ListNode first = head;
-26        ListNode second = pre;
-27        while (second.next != null) {
-28            ListNode temp1 = first.next;
-29            ListNode temp2 = second.next;
-30
-31            first.next = second;
-32            second.next = temp1;
-33
-34            first = temp1;
-35            second = temp2;
-36        }
-37    }
-38}
+// Last updated: 8/6/2026, 2:33:51 PM
+1class MyStack {
+2    Queue<Integer> q;
+3    public MyStack() {
+4        q=new LinkedList<>();
+5    }
+6    
+7    public void push(int x) {
+8        q.add(x);
+9        for(int i=1;i<q.size();i++){
+10            q.add(q.remove());
+11        }
+12    }
+13    
+14    public int pop() {
+15        return q.remove();
+16    }
+17    
+18    public int top() {
+19        return q.peek();
+20    }
+21    
+22    public boolean empty() {
+23        return q.isEmpty();
+24    }
+25}
+26
+27/**
+28 * Your MyStack object will be instantiated and called as such:
+29 * MyStack obj = new MyStack();
+30 * obj.push(x);
+31 * int param_2 = obj.pop();
+32 * int param_3 = obj.top();
+33 * boolean param_4 = obj.empty();
+34 */
